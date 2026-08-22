@@ -1,4 +1,6 @@
 package net.theduckisaspy.hotcoffee;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.theduckisaspy.hotcoffee.item.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -29,6 +31,8 @@ public class HotCoffeeMod {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        ModItems.register(modEventBus);
+
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
@@ -57,6 +61,9 @@ public class HotCoffeeMod {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.DONUTS);
+        }
 
     }
 
