@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bread"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    }
+  },
+    "pattern": [
+      " B ",
+      "BSB",
+      " B "
+    ],
+    "result": {
+      "count": 1,
+      "id": "hotcoffee:donut"
+    }
+}
