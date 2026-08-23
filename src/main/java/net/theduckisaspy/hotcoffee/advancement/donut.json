@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "id": "hotcoffee:donut"
+    },
+    "title": {
+      "translate": "advancements.hotcoffee.donut.title"
+    },
+    "description": {
+      "translate": "advancements.hotcoffee.donut.description"
+    },
+    "frame": "task",
+    "background": "minecraft:texture/gui/advacements/backgrounds/husbandry.png",
+    "show _toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "get_donut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+           { "items": ["hotcoffee:donut"] }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["get_donut"]
+  ]
+}

@@ -1,5 +1,8 @@
 {
   "itemGroup.hotcoffee.hot_coffee_tab": "Hot Coffee",
 
-  "item.hotcoffee.donut": "Donut"
+  "item.hotcoffee.donut": "Donut",
+
+  "advancements.hotcoffee.donut.title": "donut king",
+  "advancements.hotcoffee.donut.description": "got a donut"
 }
