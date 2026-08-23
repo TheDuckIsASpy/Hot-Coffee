@@ -1,4 +1,5 @@
 {
+  "parent": "hotcoffee:root",
   "display": {
     "icon": {
       "id": "hotcoffee:donut"
@@ -9,7 +10,7 @@
     "description": {
       "translate": "advancements.hotcoffee.donut.description"
     },
-    "background": "hotcoffee:gui/advancements/back.png",
+    "background": "hotcoffee:textures/gui/advancements/back.png",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true

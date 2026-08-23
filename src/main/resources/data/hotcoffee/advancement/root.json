@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "id": "hotcoffee:donut"
+    },
+    "title": {
+      "translate": "advancements.hotcoffee.root.title"
+    },
+    "description": {
+      "translate": "advancements.hotcoffee.root.description"
+    },
+    "background": "hotcoffee:textures/gui/advancements/back.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

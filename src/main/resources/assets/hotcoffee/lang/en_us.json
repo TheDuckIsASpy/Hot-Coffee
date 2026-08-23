@@ -3,6 +3,9 @@
 
   "item.hotcoffee.donut": "Donut",
 
-  "advancements.hotcoffee.donut.title": "donut king",
-  "advancements.hotcoffee.donut.description": "got a donut"
+
+  "advancements.hotcoffee.root.title": "Hot Coffee",
+  "advancements.hotcoffee.root.description": "It all starts here.",
+  "advancements.hotcoffee.donut.title": "Sugary Allure",
+  "advancements.hotcoffee.donut.description": "Craft or obtain a donut."
 }
