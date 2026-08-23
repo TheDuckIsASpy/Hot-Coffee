@@ -9,9 +9,9 @@
     "description": {
       "translate": "advancements.hotcoffee.donut.description"
     },
+    "background": "hotcoffee:gui/advancements/back.png",
     "frame": "task",
-    "background": "minecraft:texture/gui/advacements/backgrounds/husbandry.png",
-    "show _toast": true,
+    "show_toast": true,
     "announce_to_chat": true
   },
   "criteria": {
