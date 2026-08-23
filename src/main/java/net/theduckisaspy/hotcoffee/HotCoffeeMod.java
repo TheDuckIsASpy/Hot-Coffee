@@ -1,5 +1,6 @@
 package net.theduckisaspy.hotcoffee;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.theduckisaspy.hotcoffee.item.ModCreativeModeTabs;
 import net.theduckisaspy.hotcoffee.item.ModItems;
 import org.slf4j.Logger;
 
@@ -31,6 +32,8 @@ public class HotCoffeeMod {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        ModCreativeModeTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
 
 
@@ -61,9 +64,6 @@ public class HotCoffeeMod {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.DONUT);
-        }
 
     }
 
