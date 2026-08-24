@@ -20,6 +20,8 @@ public class ModCreativeModeTabs {
                     .icon(() -> new ItemStack(ModItems.DONUT.get()))
                     .displayItems((pParameters, p0utput) -> {
                         p0utput.accept(ModItems.DONUT);
+
+                        p0utput.accept(ModItems.MOCCA_SPAWN_EGG);
                     }).build());
 
     public static void register(IEventBus eventBus) {

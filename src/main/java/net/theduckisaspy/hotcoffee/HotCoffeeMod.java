@@ -1,5 +1,10 @@
 package net.theduckisaspy.hotcoffee;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.theduckisaspy.hotcoffee.entity.ModEntities;
+import net.theduckisaspy.hotcoffee.entity.client.MoccaRenderer;
 import net.theduckisaspy.hotcoffee.item.ModCreativeModeTabs;
 import net.theduckisaspy.hotcoffee.item.ModItems;
 import org.slf4j.Logger;
@@ -35,6 +40,8 @@ public class HotCoffeeMod {
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
+
+        ModEntities.register(modEventBus);
 
 
         // Register ourselves for server and other game events we are interested in.
@@ -72,5 +79,13 @@ public class HotCoffeeMod {
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
+    }
+
+    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientStartup(FMLCommonSetupEvent event) {
+            EntityRenderers.register(ModEntities.MOCCA.get(), MoccaRenderer::new);
+        }
     }
 }
