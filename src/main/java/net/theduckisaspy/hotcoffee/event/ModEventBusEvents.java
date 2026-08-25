@@ -7,6 +7,7 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.theduckisaspy.hotcoffee.HotCoffeeMod;
 import net.theduckisaspy.hotcoffee.entity.ModEntities;
 import net.theduckisaspy.hotcoffee.entity.client.MoccaModel;
+import net.theduckisaspy.hotcoffee.entity.client.MoccaRenderer;
 import net.theduckisaspy.hotcoffee.entity.client.ModModelLayers;
 import net.theduckisaspy.hotcoffee.entity.custom.MoccaEntity;
 
@@ -20,5 +21,10 @@ public class ModEventBusEvents {
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.MOCCA.get(), MoccaEntity.createAttributes().build());
+    }
+
+    @SubscribeEvent
+    public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(ModEntities.MOCCA.get(), MoccaRenderer::new);
     }
 }

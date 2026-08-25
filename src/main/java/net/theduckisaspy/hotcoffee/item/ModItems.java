@@ -14,7 +14,7 @@ public class ModItems {
     public static final DeferredItem<Item> DONUT = ITEMS.registerItem("donut", Item::new, new Item.Properties().food(ModFoodProperties.DONUT));
 
     public static final DeferredItem<Item> MOCCA_SPAWN_EGG = ITEMS.register("mocca_spawn_egg",
-            () -> new DeferredSpawnEggItem(ModEntities.MOCCA, 0xdebd47, 0xccbfbe,
+            () -> new DeferredSpawnEggItem(ModEntities.MOCCA, 0x5e4034, 0xd4a185,
                     new Item.Properties()));
 
     public static void register(IEventBus eventBus) {

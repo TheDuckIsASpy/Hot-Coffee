@@ -9,13 +9,13 @@
       "item": "minecraft:sugar"
     }
   },
-    "pattern": [
-      " B ",
-      "BSB",
-      " B "
-    ],
-    "result": {
-      "count": 1,
-      "id": "hotcoffee:donut"
-    }
+  "pattern": [
+    " B ",
+    "BSB",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "hotcoffee:donut"
+  }
 }

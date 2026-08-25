@@ -9,8 +9,8 @@ import net.theduckisaspy.hotcoffee.HotCoffeeMod;
 import net.theduckisaspy.hotcoffee.entity.custom.MoccaEntity;
 
 public class MoccaRenderer extends MobRenderer<MoccaEntity, MoccaModel> {
-    public MoccaRenderer(EntityRendererProvider.Context context, MoccaModel model, float shadowRadius) {
-        super(context, new MoccaModel(context.bakeLayer(ModModelLayers.MOCCA)), shadowRadius);
+    public MoccaRenderer(EntityRendererProvider.Context context) {
+        super(context, new MoccaModel(context.bakeLayer(ModModelLayers.MOCCA)), 0.5f);
     }
 
     @Override
