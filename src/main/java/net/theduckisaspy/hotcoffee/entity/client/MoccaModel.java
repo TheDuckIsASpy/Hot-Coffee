@@ -22,9 +22,7 @@ public class MoccaModel extends HierarchicalModel<MoccaEntity>{
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        PartDefinition mocca = partdefinition.addOrReplaceChild("mocca", CubeListBuilder.create().texOffs(17, 16).addBox(-3.25F, -5.7333F, -2.1417F, 7.0F, 6.0F, 4.0F, new CubeDeformation(0.0F))
-                .texOffs(0, 40).addBox(-3.25F, 0.2667F, -2.0417F, 7.0F, 6.0F, 4.0F, new CubeDeformation(0.0F))
-                .texOffs(46, 0).addBox(-3.25F, -0.7333F, -3.1417F, 7.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-0.25F, 8.7333F, 0.1417F));
+        PartDefinition mocca = partdefinition.addOrReplaceChild("mocca", CubeListBuilder.create().texOffs(17, 16).addBox(-3.25F, -5.7333F, -2.1417F, 7.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-0.25F, 8.7333F, 0.1417F));
 
         PartDefinition left_arm = mocca.addOrReplaceChild("left_arm", CubeListBuilder.create(), PartPose.offset(4.8816F, -8.2413F, -0.1199F));
 
@@ -34,25 +32,29 @@ public class MoccaModel extends HierarchicalModel<MoccaEntity>{
 
         PartDefinition cube_r2 = right_arm.addOrReplaceChild("cube_r2", CubeListBuilder.create().texOffs(32, 0).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 9.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.1316F, 4.5079F, -0.5218F, 0.0087F, -0.0017F, 0.0524F));
 
-        PartDefinition left_leg = mocca.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(45, 33).mirror().addBox(-1.5F, 4.5F, -1.5F, 3.0F, 9.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(2.0F, 1.7667F, -0.0417F));
+        PartDefinition bottom = mocca.addOrReplaceChild("bottom", CubeListBuilder.create().texOffs(0, 40).addBox(1.0F, -4.0F, -4.0F, 7.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.25F, 4.2667F, 1.9583F));
 
-        PartDefinition right_leg = mocca.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(45, 33).addBox(-1.5F, 4.5F, -1.5F, 3.0F, 9.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(-1.5F, 1.7667F, -0.0417F));
+        PartDefinition belt = bottom.addOrReplaceChild("belt", CubeListBuilder.create().texOffs(46, 0).addBox(-4.0F, -1.0F, -1.0F, 7.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(5.0F, -4.0F, -4.1F));
+
+        PartDefinition tail = bottom.addOrReplaceChild("tail", CubeListBuilder.create(), PartPose.offset(4.5F, -3.1F, -0.8F));
+
+        PartDefinition cube_r3 = tail.addOrReplaceChild("cube_r3", CubeListBuilder.create().texOffs(51, 48).addBox(-0.5F, -3.5F, -1.0F, 2.0F, 7.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-0.5F, 3.0F, 1.0F, 0.3578F, 0.0F, 0.0F));
+
+        PartDefinition flap = bottom.addOrReplaceChild("flap", CubeListBuilder.create(), PartPose.offset(4.5F, -4.4555F, -4.7593F));
+
+        PartDefinition cube_r4 = flap.addOrReplaceChild("cube_r4", CubeListBuilder.create().texOffs(29, 37).addBox(-3.5F, -0.5F, -0.5F, 7.0F, 9.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 1.0055F, 0.2093F, -0.0524F, 0.0F, 0.0F));
+
+        PartDefinition left_leg = bottom.addOrReplaceChild("left_leg", CubeListBuilder.create().texOffs(45, 33).mirror().addBox(-1.5F, 4.5F, -1.5F, 3.0F, 9.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(6.25F, -2.5F, -2.0F));
+
+        PartDefinition right_leg = bottom.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(45, 33).addBox(-1.5F, 4.5F, -1.5F, 3.0F, 9.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(2.75F, -2.5F, -2.0F));
 
         PartDefinition jgr = mocca.addOrReplaceChild("jgr", CubeListBuilder.create(), PartPose.offset(-1.25F, -4.4409F, -1.5436F));
 
-        PartDefinition cube_r3 = jgr.addOrReplaceChild("cube_r3", CubeListBuilder.create().texOffs(2, 33).addBox(0.0F, -3.0F, -8.0F, 3.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-1.5F, -0.4924F, 5.0019F, 0.4887F, 0.0F, 0.0F));
+        PartDefinition cube_r5 = jgr.addOrReplaceChild("cube_r5", CubeListBuilder.create().texOffs(2, 33).addBox(0.0F, -3.0F, -8.0F, 3.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-1.5F, -0.4924F, 5.0019F, 0.4887F, 0.0F, 0.0F));
 
         PartDefinition jgl = mocca.addOrReplaceChild("jgl", CubeListBuilder.create(), PartPose.offset(1.75F, -4.4409F, -1.5436F));
 
-        PartDefinition cube_r4 = jgl.addOrReplaceChild("cube_r4", CubeListBuilder.create().texOffs(38, 6).addBox(1.0F, -3.0F, -8.0F, 3.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-2.5F, -0.4924F, 5.0019F, 0.4887F, 0.0F, 0.0F));
-
-        PartDefinition flap = mocca.addOrReplaceChild("flap", CubeListBuilder.create(), PartPose.offset(0.25F, -0.1888F, -2.801F));
-
-        PartDefinition cube_r5 = flap.addOrReplaceChild("cube_r5", CubeListBuilder.create().texOffs(29, 37).addBox(-3.5F, -0.5F, -0.5F, 7.0F, 9.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 1.0055F, 0.2093F, -0.0524F, 0.0F, 0.0F));
-
-        PartDefinition tail = mocca.addOrReplaceChild("tail", CubeListBuilder.create(), PartPose.offset(0.25F, 1.1667F, 1.1583F));
-
-        PartDefinition cube_r6 = tail.addOrReplaceChild("cube_r6", CubeListBuilder.create().texOffs(51, 48).addBox(-0.5F, -3.5F, -1.0F, 2.0F, 7.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-0.5F, 3.0F, 1.0F, 0.3578F, 0.0F, 0.0F));
+        PartDefinition cube_r6 = jgl.addOrReplaceChild("cube_r6", CubeListBuilder.create().texOffs(38, 6).addBox(1.0F, -3.0F, -8.0F, 3.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-2.5F, -0.4924F, 5.0019F, 0.4887F, 0.0F, 0.0F));
 
         PartDefinition head = mocca.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.65F, -7.85F, -3.75F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.9F, -5.8833F, -0.3917F));
 
