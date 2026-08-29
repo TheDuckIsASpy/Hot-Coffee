@@ -11,7 +11,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.event.EventHooks;
@@ -22,6 +21,8 @@ public class MoccaEntity extends TamableAnimal {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
 
+    public final AnimationState sittingAnimationState = new AnimationState();
+
     public MoccaEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
     }
@@ -29,12 +30,13 @@ public class MoccaEntity extends TamableAnimal {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 2.0));
-        this.goalSelector.addGoal(2, new TemptGoal(this, 1.25, stack -> stack.is(ModItems.DONUT), false));
-        this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.1d, 18f, 7f));
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0f));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(1, new SitWhenOrderedToGoal(this));
+        this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 1.1d, 2.0f, 18.0f));
+        this.goalSelector.addGoal(3, new PanicGoal(this, 2.0));
+        this.goalSelector.addGoal(4, new TemptGoal(this, 1.25, stack -> stack.is(ModItems.DONUT), false));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
+        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0f));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
     }
 
 
@@ -57,45 +59,48 @@ public class MoccaEntity extends TamableAnimal {
     }
 
     private void setupAnimationStates() {
-        if(this.idleAnimationTimeout <= 0) {
+        if (this.idleAnimationTimeout <= 0) {
             this.idleAnimationTimeout = 40;
             this.idleAnimationState.start(this.tickCount);
         } else {
             --this.idleAnimationTimeout;
         }
+
+        if (this.isOrderedToSit()) {
+            this.sittingAnimationState.startIfStopped(this.tickCount);
+        } else {
+            this.sittingAnimationState.stop();
+        }
     }
 
-
     @Override
-    public InteractionResult mobInterct(Player, Player, InteractionHand pHand){
-        ItemStack itemStack = Player.getItemInHand(pHand);
-        Item itemForTaming = ModItems.DONUT;
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemStack = player.getItemInHand(hand);
 
-        if (item == itemForTaming && !isTame()) {
-            if (this.level().isClientSide()) {
-                return InteractionResult.CONSUME;
-            } else {
-                if (!Player.getAbilities().instabuild) {
+        if (!this.isTame() && itemStack.is(ModItems.DONUT)) {
+            if (!this.level().isClientSide()) {
+                if (!player.getAbilities().instabuild) {
                     itemStack.shrink(1);
                 }
 
-                if (!EventHooks.onAnimalTame(this, Player)) {
-                    super.tame(Player);
+                if (!EventHooks.onAnimalTame(this, player)) {
+                    this.tame(player);
                     this.navigation.recomputePath();
                     this.setTarget(null);
-                    this.level().broadcastEntityEvent(this, (byte));
-
-                    toggleSitting();
+                    this.level().broadcastEntityEvent(this, (byte) 7);
+                } else {
+                    this.level().broadcastEntityEvent(this, (byte) 6);
                 }
-
-                return InteractionResult.SUCCESS;
             }
-        }
-
-        if(isTame() && pHand == InteractionHand.MAIN_HAND && !isFood(itemStack)) {
-            toggleSitting();
             return InteractionResult.SUCCESS;
         }
+
+        if (this.isTame() && this.isOwnedBy(player)) {
+            this.setOrderedToSit(!this.isOrderedToSit());
+            return InteractionResult.SUCCESS;
+        }
+
+        return super.mobInteract(player, hand);
     }
 
     @Override

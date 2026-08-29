@@ -82,9 +82,12 @@ public class MoccaModel extends HierarchicalModel<MoccaEntity>{
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(netHeadYaw, headPitch);
 
-        this.animateWalk(MoccaAnimations.walking, limbSwing, limbSwingAmount, 2f, 2.5f);
-        this.animate(entity.idleAnimationState, MoccaAnimations.idle, ageInTicks, 1f);
-
+        if (entity.isOrderedToSit()) {
+            this.animate(entity.sittingAnimationState, MoccaAnimations.sitting, ageInTicks, 1f);
+        } else {
+            this.animateWalk(MoccaAnimations.walking, limbSwing, limbSwingAmount, 2f, 2.5f);
+            this.animate(entity.idleAnimationState, MoccaAnimations.idle, ageInTicks, 1f);
+        }
     }
 
     private void applyHeadRotation(float headYaw, float headPitch) {
