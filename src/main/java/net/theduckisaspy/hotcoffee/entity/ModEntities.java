@@ -16,7 +16,7 @@ public class ModEntities {
 
     public static final Supplier<EntityType<MoccaEntity>> MOCCA =
             ENTITY_TYPES.register("mocca", () -> EntityType.Builder.of(MoccaEntity::new, MobCategory.CREATURE)
-                    .sized(0.75f, 0.95f).build("mocca"));
+                    .sized(0.8f, 2.0f).build("mocca"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

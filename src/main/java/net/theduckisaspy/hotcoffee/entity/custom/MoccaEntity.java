@@ -1,5 +1,6 @@
 package net.theduckisaspy.hotcoffee.entity.custom;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -23,17 +24,21 @@ public class MoccaEntity extends TamableAnimal {
 
     public final AnimationState sittingAnimationState = new AnimationState();
 
+    private int tamingProgress = 0;
+    private int tamingThreshold;
+
     public MoccaEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
+        this.tamingThreshold = this.random.nextInt(7) + 1;
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new SitWhenOrderedToGoal(this));
-        this.goalSelector.addGoal(2, new FollowOwnerGoal(this, 1.1d, 2.0f, 18.0f));
-        this.goalSelector.addGoal(3, new PanicGoal(this, 2.0));
-        this.goalSelector.addGoal(4, new TemptGoal(this, 1.25, stack -> stack.is(ModItems.DONUT), false));
+        this.goalSelector.addGoal(2, new PanicGoal(this, 2.0));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack -> stack.is(ModItems.DONUT), false));
+        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.1d, 18f, 7f));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0f));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
@@ -83,7 +88,9 @@ public class MoccaEntity extends TamableAnimal {
                     itemStack.shrink(1);
                 }
 
-                if (!EventHooks.onAnimalTame(this, player)) {
+                this.tamingProgress++;
+
+                if (this.tamingProgress >= this.tamingThreshold && !EventHooks.onAnimalTame(this, player)) {
                     this.tame(player);
                     this.navigation.recomputePath();
                     this.setTarget(null);
@@ -101,6 +108,22 @@ public class MoccaEntity extends TamableAnimal {
         }
 
         return super.mobInteract(player, hand);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putInt("TamingProgress", this.tamingProgress);
+        compound.putInt("TamingThreshold", this.tamingThreshold);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        this.tamingProgress = compound.getInt("TamingProgress");
+        if (compound.contains("TamingThreshold")) {
+            this.tamingThreshold = compound.getInt("TamingThreshold");
+        }
     }
 
     @Override
