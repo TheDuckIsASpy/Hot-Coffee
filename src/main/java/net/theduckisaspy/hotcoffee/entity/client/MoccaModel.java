@@ -22,17 +22,17 @@ public class MoccaModel extends HierarchicalModel<MoccaEntity>{
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        PartDefinition mocca = partdefinition.addOrReplaceChild("mocca", CubeListBuilder.create().texOffs(17, 16).addBox(-3.5F, -21.0F, -2.0F, 7.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+        PartDefinition mocca = partdefinition.addOrReplaceChild("mocca", CubeListBuilder.create().texOffs(17, 16).addBox(-3.5F, -20.5621F, -3.2906F, 7.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 23.5F, 0.0F));
 
-        PartDefinition left_arm = mocca.addOrReplaceChild("left_arm", CubeListBuilder.create(), PartPose.offset(4.6316F, -23.5079F, 0.0218F));
+        PartDefinition left_arm = mocca.addOrReplaceChild("left_arm", CubeListBuilder.create(), PartPose.offset(4.6316F, -23.0701F, -1.2688F));
 
         PartDefinition cube_r1 = left_arm.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(32, 0).mirror().addBox(-1.0F, -2.0F, -1.0F, 2.0F, 9.0F, 3.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(-0.1316F, 4.5079F, -0.5218F, 0.0087F, 0.0017F, -0.0524F));
 
-        PartDefinition right_arm = mocca.addOrReplaceChild("right_arm", CubeListBuilder.create(), PartPose.offset(-4.6316F, -23.5079F, 0.0218F));
+        PartDefinition right_arm = mocca.addOrReplaceChild("right_arm", CubeListBuilder.create(), PartPose.offset(-4.6316F, -23.0701F, -1.2688F));
 
         PartDefinition cube_r2 = right_arm.addOrReplaceChild("cube_r2", CubeListBuilder.create().texOffs(32, 0).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 9.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.1316F, 4.5079F, -0.5218F, 0.0087F, -0.0017F, 0.0524F));
 
-        PartDefinition bottom = mocca.addOrReplaceChild("bottom", CubeListBuilder.create().texOffs(0, 40).addBox(1.0F, -4.0F, -4.0F, 7.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.5F, -11.0F, 2.1F));
+        PartDefinition bottom = mocca.addOrReplaceChild("bottom", CubeListBuilder.create().texOffs(0, 40).addBox(1.0F, -4.0F, -4.0F, 7.0F, 6.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(-4.5F, -10.5621F, 0.8094F));
 
         PartDefinition belt = bottom.addOrReplaceChild("belt", CubeListBuilder.create().texOffs(46, 0).addBox(-4.0F, -1.0F, -1.0F, 7.0F, 1.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(5.0F, -4.0F, -4.1F));
 
@@ -48,15 +48,15 @@ public class MoccaModel extends HierarchicalModel<MoccaEntity>{
 
         PartDefinition right_leg = bottom.addOrReplaceChild("right_leg", CubeListBuilder.create().texOffs(45, 33).addBox(-1.5F, 4.5F, -1.5F, 3.0F, 9.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(2.75F, -2.5F, -2.0F));
 
-        PartDefinition jgr = mocca.addOrReplaceChild("jgr", CubeListBuilder.create(), PartPose.offset(-1.5F, -19.7076F, -1.4019F));
+        PartDefinition jgr = mocca.addOrReplaceChild("jgr", CubeListBuilder.create(), PartPose.offset(-1.5F, -19.2697F, -2.6925F));
 
         PartDefinition cube_r5 = jgr.addOrReplaceChild("cube_r5", CubeListBuilder.create().texOffs(2, 33).addBox(0.0F, -3.0F, -8.0F, 3.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-1.5F, -0.4924F, 5.0019F, 0.4887F, 0.0F, 0.0F));
 
-        PartDefinition jgl = mocca.addOrReplaceChild("jgl", CubeListBuilder.create(), PartPose.offset(1.5F, -19.7076F, -1.4019F));
+        PartDefinition jgl = mocca.addOrReplaceChild("jgl", CubeListBuilder.create(), PartPose.offset(1.5F, -19.2697F, -2.6925F));
 
         PartDefinition cube_r6 = jgl.addOrReplaceChild("cube_r6", CubeListBuilder.create().texOffs(38, 6).addBox(1.0F, -3.0F, -8.0F, 3.0F, 3.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-2.5F, -0.4924F, 5.0019F, 0.4887F, 0.0F, 0.0F));
 
-        PartDefinition head = mocca.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.65F, -7.85F, -3.75F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.65F, -21.15F, -0.25F));
+        PartDefinition head = mocca.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.65F, -7.85F, -3.75F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.65F, -20.7121F, -1.5406F));
 
         PartDefinition left_ear = head.addOrReplaceChild("left_ear", CubeListBuilder.create(), PartPose.offset(2.2935F, -6.3261F, 0.25F));
 
@@ -82,7 +82,7 @@ public class MoccaModel extends HierarchicalModel<MoccaEntity>{
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(netHeadYaw, headPitch);
 
-        if (entity.isOrderedToSit()) {
+        if (entity.isInSittingPose()) {
             this.animate(entity.sittingAnimationState, MoccaAnimations.sitting, ageInTicks, 1f);
             this.root().y += 12.0F;
         } else {

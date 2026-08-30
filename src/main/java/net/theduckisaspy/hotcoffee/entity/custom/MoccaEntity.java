@@ -38,8 +38,15 @@ public class MoccaEntity extends TamableAnimal {
         this.goalSelector.addGoal(1, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(2, new PanicGoal(this, 2.0));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack -> stack.is(ModItems.DONUT), false));
-        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.1d, 2f, 18f));
-        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
+        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.1d, 10.0F, 2.0F));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0) {
+            @Override
+            public boolean canUse() {
+                // Wild Moccas wander freely. Tamed ones stay put so they only
+                // move when the follow goal tells them to.
+                return !MoccaEntity.this.isTame() && super.canUse();
+            }
+        });
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0f));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
     }
@@ -71,7 +78,9 @@ public class MoccaEntity extends TamableAnimal {
             --this.idleAnimationTimeout;
         }
 
-        if (this.isOrderedToSit()) {
+        // isInSittingPose() is synced to the client by the game, unlike
+        // isOrderedToSit(), which only ever has the correct value on the server.
+        if (this.isInSittingPose()) {
             this.sittingAnimationState.startIfStopped(this.tickCount);
         } else {
             this.sittingAnimationState.stop();
@@ -101,7 +110,16 @@ public class MoccaEntity extends TamableAnimal {
         }
 
         if (this.isTame() && this.isOwnedBy(player)) {
-            this.setOrderedToSit(!this.isOrderedToSit());
+            // Only the server decides this, then tells every client via
+            // setInSittingPose - so both sides always agree.
+            if (!this.level().isClientSide()) {
+                boolean sitting = !this.isOrderedToSit();
+                this.setOrderedToSit(sitting);
+                this.setInSittingPose(sitting);
+                this.jumping = false;
+                this.navigation.stop();
+                this.setTarget(null);
+            }
             return InteractionResult.SUCCESS;
         }
 

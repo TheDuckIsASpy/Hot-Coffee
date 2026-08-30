@@ -182,10 +182,10 @@ public class MoccaAnimations {
                         new Keyframe(2.0F, KeyframeAnimations.degreeVec(-7.5F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
                 ))
                 .addAnimation("mocca", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                        new Keyframe(0.0F, KeyframeAnimations.degreeVec(9.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+                        new Keyframe(0.0F, KeyframeAnimations.degreeVec(12.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
                 ))
                 .addAnimation("mocca", new AnimationChannel(AnimationChannel.Targets.POSITION,
-                        new Keyframe(0.0F, KeyframeAnimations.posVec(0.0F, -11.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
+                        new Keyframe(0.0F, KeyframeAnimations.posVec(0.0F, -10.3F, 8.5F), AnimationChannel.Interpolations.LINEAR)
                 ))
                 .addAnimation("mocca", new AnimationChannel(AnimationChannel.Targets.SCALE,
                         new Keyframe(0.0F, KeyframeAnimations.scaleVec(1.0F, 1.0F, 1.0F), AnimationChannel.Interpolations.LINEAR),
@@ -209,9 +209,9 @@ public class MoccaAnimations {
                         new Keyframe(0.0F, KeyframeAnimations.posVec(0.1F, -0.7F, 1.1F), AnimationChannel.Interpolations.LINEAR)
                 ))
                 .addAnimation("left_leg", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                        new Keyframe(0.0F, KeyframeAnimations.degreeVec(-4.8F, 0.5721F, -15.7307F), AnimationChannel.Interpolations.LINEAR),
-                        new Keyframe(1.0F, KeyframeAnimations.degreeVec(-4.0F, 0.5721F, -15.7307F), AnimationChannel.Interpolations.LINEAR),
-                        new Keyframe(2.0F, KeyframeAnimations.degreeVec(-4.8F, 0.5721F, -15.7307F), AnimationChannel.Interpolations.LINEAR)
+                        new Keyframe(0.0F, KeyframeAnimations.degreeVec(2.2F, 0.5721F, -15.7307F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(1.0F, KeyframeAnimations.degreeVec(3.0F, 0.5721F, -15.7307F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(2.0F, KeyframeAnimations.degreeVec(2.2F, 0.5721F, -15.7307F), AnimationChannel.Interpolations.LINEAR)
                 ))
                 .addAnimation("left_leg", new AnimationChannel(AnimationChannel.Targets.POSITION,
                         new Keyframe(0.0F, KeyframeAnimations.posVec(-1.5F, -0.5F, 0.2F), AnimationChannel.Interpolations.LINEAR),
@@ -219,9 +219,9 @@ public class MoccaAnimations {
                         new Keyframe(2.0F, KeyframeAnimations.posVec(-1.5F, -0.5F, 0.2F), AnimationChannel.Interpolations.LINEAR)
                 ))
                 .addAnimation("right_leg", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                        new Keyframe(0.0F, KeyframeAnimations.degreeVec(-4.4F, 1.7815F, 14.1694F), AnimationChannel.Interpolations.LINEAR),
-                        new Keyframe(1.0F, KeyframeAnimations.degreeVec(-5.6355F, 1.7815F, 14.1694F), AnimationChannel.Interpolations.LINEAR),
-                        new Keyframe(2.0F, KeyframeAnimations.degreeVec(-4.4F, 1.7815F, 14.1694F), AnimationChannel.Interpolations.LINEAR)
+                        new Keyframe(0.0F, KeyframeAnimations.degreeVec(2.6F, 1.7815F, 14.1694F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(1.0F, KeyframeAnimations.degreeVec(1.3645F, 1.7815F, 14.1694F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(2.0F, KeyframeAnimations.degreeVec(2.6F, 1.7815F, 14.1694F), AnimationChannel.Interpolations.LINEAR)
                 ))
                 .addAnimation("right_leg", new AnimationChannel(AnimationChannel.Targets.POSITION,
                         new Keyframe(0.0F, KeyframeAnimations.posVec(1.2F, -0.4F, 0.4F), AnimationChannel.Interpolations.LINEAR),
@@ -239,9 +239,9 @@ public class MoccaAnimations {
                         new Keyframe(2.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
                 ))
                 .addAnimation("flap", new AnimationChannel(AnimationChannel.Targets.ROTATION,
-                        new Keyframe(0.0F, KeyframeAnimations.degreeVec(3.0069F, 1.9949F, 0.1569F), AnimationChannel.Interpolations.LINEAR),
-                        new Keyframe(1.0F, KeyframeAnimations.degreeVec(2.9718F, -0.9869F, 0.5402F), AnimationChannel.Interpolations.LINEAR),
-                        new Keyframe(2.0F, KeyframeAnimations.degreeVec(3.0069F, 1.9949F, 0.1569F), AnimationChannel.Interpolations.LINEAR)
+                        new Keyframe(0.0F, KeyframeAnimations.degreeVec(10.0069F, 1.9949F, 0.1569F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(1.0F, KeyframeAnimations.degreeVec(9.9718F, -0.9869F, 0.5402F), AnimationChannel.Interpolations.LINEAR),
+                        new Keyframe(2.0F, KeyframeAnimations.degreeVec(10.0069F, 1.9949F, 0.1569F), AnimationChannel.Interpolations.LINEAR)
                 ))
                 .addAnimation("flap", new AnimationChannel(AnimationChannel.Targets.POSITION,
                         new Keyframe(0.0F, KeyframeAnimations.posVec(0.0F, -2.4F, 0.0F), AnimationChannel.Interpolations.LINEAR),
