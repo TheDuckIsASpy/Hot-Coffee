@@ -38,7 +38,7 @@ public class MoccaEntity extends TamableAnimal {
         this.goalSelector.addGoal(1, new SitWhenOrderedToGoal(this));
         this.goalSelector.addGoal(2, new PanicGoal(this, 2.0));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack -> stack.is(ModItems.DONUT), false));
-        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.1d, 18f, 7f));
+        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.1d, 2f, 18f));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0f));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
@@ -88,10 +88,8 @@ public class MoccaEntity extends TamableAnimal {
                     itemStack.shrink(1);
                 }
 
-                this.tamingProgress++;
-
-                if (this.tamingProgress >= this.tamingThreshold && !EventHooks.onAnimalTame(this, player)) {
-                    this.tame(player);
+                if (!EventHooks.onAnimalTame(this, player)) {
+                    super.tame(player);
                     this.navigation.recomputePath();
                     this.setTarget(null);
                     this.level().broadcastEntityEvent(this, (byte) 7);
